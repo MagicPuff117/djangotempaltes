@@ -20,21 +20,19 @@
       <div class="row">
         <h1 class="col s12">Инфляция в России</h1>
         <div class="col s12 m8">
-          <thead>
-            <tr>
-              {%for el in headers%}
-                {{el}}
-              {%endfor%}
-            </tr>
+          <table>
+          <tr>{%for el in headers%}
+              <th>{{el}}</th>
+          {%endfor%}
 
-            <tr>{%for el in data%}
+            {%for el in data%}
                   <br>
                   {%for num in el%}
                     {{num|format_empty_value}}
                   {%endfor%}
                 {%endfor%}
             </tr>
-
+          </table>
           </thead>
 
         </div>
