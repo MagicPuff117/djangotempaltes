@@ -1,4 +1,7 @@
 <!DOCTYPE html>{% load static %}
+
+
+{%load tags%}
 <html>
   <head>
     <meta charset="UTF-8">
@@ -19,12 +22,19 @@
         <div class="col s12 m8">
           <thead>
             <tr>
-              {% for cell in header%}
-                {% if forloop.last%}
-                  {{cell}}
-                {%endif%}
+              {%for el in headers%}
+                {{el}}
               {%endfor%}
             </tr>
+
+            <tr>{%for el in data%}
+                  <br>
+                  {%for num in el%}
+                    {{num|format_empty_value}}
+                  {%endfor%}
+                {%endfor%}
+            </tr>
+
           </thead>
 
         </div>

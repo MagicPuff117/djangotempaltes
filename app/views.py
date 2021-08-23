@@ -1,29 +1,24 @@
 from django.shortcuts import render
 import csv
 
-
+from django.conf import settings
 
 def inflation_view(request):
     template_name = 'app/inflation.html'
 
-    with open('inflation_russia.csv', encoding='UTF-8') as f:
+    with open('inflation_russia.csv', newline='', encoding='UTF-8') as f:
         content = csv.reader(f, delimiter=';')
-        rows1 =[]
-        for lines in content:
-            rows2 = []
-            for row in lines:
-                if row:
-                    rows2.append(row)
-                else:
-                    rows2.append('-')
-            rows1.append(rows2)
-        context = {'header': rows1[0],'data': rows1[1:]}
+        data = list(content)
 
-        return render(request, template_name, context)
+        return render(request, template_name, {'headers': data[0], 'data': data[1:]})
 
+class User():
+    def __init__(self, name):
+        self.name = name
+    def upper_name(self):
+        return self.name.upper()
 
 def test_view(request):
-    template_name = 'app/data.html'
-    context = {'username':'Vova'}
 
-    return render(request, template_name, context)
+    u = User("Sergey")
+    return render(request,'app/test.html', context={'user': u})

@@ -22,4 +22,6 @@ from .views import test_view
 urlpatterns = [
     path('', inflation_view, name='main'),
     path('admin/', admin.site.urls),
-    path('home/', test_view, name='home')]
+    path('test/', test_view,name='test')
+    ]
+
