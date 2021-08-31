@@ -22,8 +22,6 @@ def rows_format(value):
             return '#E65C3F'
         elif 5 < val:
             return '#C92B0A'
-        elif value == "-":
-            return '#FFFFFF'
         else:
             return '#FFFFFF'
-    return '-'
+    return '#FFFFFF'
