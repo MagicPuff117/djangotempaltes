@@ -17,11 +17,10 @@ from django.contrib import admin
 from django.urls import path
 
 from .views import inflation_view
-from .views import test_view
+
 
 urlpatterns = [
     path('', inflation_view, name='main'),
     path('admin/', admin.site.urls),
-    path('test/', test_view,name='test')
     ]
 

@@ -12,13 +12,3 @@ def inflation_view(request):
 
         return render(request, template_name, {'headers': data[0], 'data': data[1:]})
 
-class User():
-    def __init__(self, name):
-        self.name = name
-    def upper_name(self):
-        return self.name.upper()
-
-def test_view(request):
-
-    u = User("Sergey")
-    return render(request,'app/test.html', context={'user': u})

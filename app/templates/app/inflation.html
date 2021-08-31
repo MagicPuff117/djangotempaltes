@@ -21,19 +21,27 @@
         <h1 class="col s12">Инфляция в России</h1>
         <div class="col s12 m8">
           <table>
-          <tr>{%for el in headers%}
-              <th>{{el}}</th>
-          {%endfor%}
-
-            {%for el in data%}
-                  <br>
-                  {%for num in el%}
-                    {{num|format_empty_value}}
-                  {%endfor%}
+            <thead>
+              <tr>{%for el in headers%}
+                <th>{{el}}</th>
                 {%endfor%}
+              </tr>
+            </thead>
+            {% for row in data %}
+            <tr>
+              {% for cell in row %}
+                {% if forloop.first %}
+                  <td> {{ cell }} </td>
+                  {% elif forloop.last %}
+                  <td bgcolor='#D3D3D3'> {{ cell }} </td>
+                  {% else %}
+                  <td bgcolor={{cell|rows_format}}> {{ cell|format_empty_value }} </td>
+                {% endif %}
+              {% endfor %}
             </tr>
+            {% endfor %}
           </table>
-          </thead>
+
 
         </div>
       </div>
